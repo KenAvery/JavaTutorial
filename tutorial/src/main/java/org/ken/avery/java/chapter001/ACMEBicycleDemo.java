@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package org.ken.avery.java.chapter001;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.

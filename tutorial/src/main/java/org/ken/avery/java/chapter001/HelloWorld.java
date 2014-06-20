@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package org.ken.avery.java.chapter001;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,30 +30,10 @@ package org.ken.avery.java.oracle;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-public class BicycleDemo
+public class HelloWorld
 {
     public static void main(final String[] args)
     {
-
-        // Create two different
-        // Bicycle objects
-        final Bicycle bike1 = new Bicycle();
-        final Bicycle bike2 = new Bicycle();
-
-        // Invoke methods on
-        // those objects
-        bike1.changeCadence(50);
-        bike1.speedUp(10);
-        bike1.changeGear(2);
-        bike1.printStates();
-
-        bike2.changeCadence(50);
-        bike2.speedUp(10);
-        bike2.changeGear(2);
-        bike2.changeCadence(40);
-        bike2.speedUp(10);
-        bike2.changeGear(3);
-        bike2.printStates();
+        System.out.println("Hello World!");
     }
 }
