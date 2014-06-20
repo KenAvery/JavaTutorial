@@ -1,4 +1,4 @@
-package org.ken.avery.java.chapter001;
+package org.ken.avery.java.oracle;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,8 +30,10 @@ package org.ken.avery.java.chapter001;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-public class MountainBike
+public class HelloWorld
 {
-
+    public static void main(final String[] args)
+    {
+        System.out.println("Hello World!");
+    }
 }

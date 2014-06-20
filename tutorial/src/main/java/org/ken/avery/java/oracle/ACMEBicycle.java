@@ -1,4 +1,4 @@
-package org.ken.avery.java.chapter001;
+package org.ken.avery.java.oracle;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,30 +30,41 @@ package org.ken.avery.java.chapter001;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-public class BicycleDemo
+public class ACMEBicycle implements BicycleInterface
 {
-    public static void main(final String[] args)
+    int cadence = 0;
+    int speed = 0;
+    int gear = 1;
+
+    // The compiler will now require that methods
+    // changeCadence, changeGear, speedUp, and applyBrakes
+    // all be implemented. Compilation will fail if those
+    // methods are missing from this class.
+
+    public void changeCadence(final int newValue)
     {
+        cadence = newValue;
+    }
 
-        // Create two different
-        // Bicycle objects
-        final Bicycle bike1 = new Bicycle();
-        final Bicycle bike2 = new Bicycle();
+    public void changeGear(final int newValue)
+    {
+        gear = newValue;
+    }
 
-        // Invoke methods on
-        // those objects
-        bike1.changeCadence(50);
-        bike1.speedUp(10);
-        bike1.changeGear(2);
-        bike1.printStates();
+    public void speedUp(final int increment)
+    {
+        speed = speed + increment;
+    }
 
-        bike2.changeCadence(50);
-        bike2.speedUp(10);
-        bike2.changeGear(2);
-        bike2.changeCadence(40);
-        bike2.speedUp(10);
-        bike2.changeGear(3);
-        bike2.printStates();
+    public void applyBrakes(final int decrement)
+    {
+        speed = speed - decrement;
+    }
+
+    void printStates()
+    {
+        System.out.println("cadence:" +
+                cadence + " speed:" +
+                speed + " gear:" + gear);
     }
 }
