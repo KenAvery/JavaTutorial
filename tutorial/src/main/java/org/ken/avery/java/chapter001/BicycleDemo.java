@@ -30,10 +30,30 @@ package org.ken.avery.java.chapter001;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class HelloWorld
+
+public class BicycleDemo
 {
     public static void main(final String[] args)
     {
-        System.out.println("Hello World!");
+
+        // Create two different
+        // Bicycle objects
+        final Bicycle bike1 = new Bicycle();
+        final Bicycle bike2 = new Bicycle();
+
+        // Invoke methods on
+        // those objects
+        bike1.changeCadence(50);
+        bike1.speedUp(10);
+        bike1.changeGear(2);
+        bike1.printStates();
+
+        bike2.changeCadence(50);
+        bike2.speedUp(10);
+        bike2.changeGear(2);
+        bike2.changeCadence(40);
+        bike2.speedUp(10);
+        bike2.changeGear(3);
+        bike2.printStates();
     }
 }

@@ -30,10 +30,8 @@ package org.ken.avery.java.chapter001;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class HelloWorld
+
+public class MountainBike
 {
-    public static void main(final String[] args)
-    {
-        System.out.println("Hello World!");
-    }
+
 }
