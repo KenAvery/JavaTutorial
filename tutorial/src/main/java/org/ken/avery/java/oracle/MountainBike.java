@@ -1,4 +1,4 @@
-package org.ken.avery.java.chapter001;
+package org.ken.avery.java.oracle;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -31,36 +31,7 @@ package org.ken.avery.java.chapter001;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-public class Bicycle
+public class MountainBike
 {
-    int cadence = 0;
-    int speed = 0;
-    int gear = 1;
 
-    void changeCadence(final int newValue)
-    {
-        cadence = newValue;
-    }
-
-    void changeGear(final int newValue)
-    {
-        gear = newValue;
-    }
-
-    void speedUp(final int increment)
-    {
-        speed = speed + increment;
-    }
-
-    void applyBrakes(final int decrement)
-    {
-        speed = speed - decrement;
-    }
-
-    void printStates()
-    {
-        System.out.println("cadence:" +
-                cadence + " speed:" +
-                speed + " gear:" + gear);
-    }
 }
