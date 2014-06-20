@@ -1,6 +1,6 @@
 JavaTutorial
 ============
 
-Progress of going thru the Orical Java Tutorial
+This project is being used to learn Git
+It is based on the Oracle Java Tutorial
 
-Using this project to also learn GitHub
