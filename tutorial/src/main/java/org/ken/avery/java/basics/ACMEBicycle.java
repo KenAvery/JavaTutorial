@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package org.ken.avery.java.basics;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,14 +30,41 @@ package org.ken.avery.java.oracle;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public interface BicycleInterface
+public class ACMEBicycle implements BicycleInterface
 {
-    //  wheel revolutions per minute
-    void changeCadence(int newValue);
+    int cadence = 0;
+    int speed = 0;
+    int gear = 1;
 
-    void changeGear(int newValue);
+    // The compiler will now require that methods
+    // changeCadence, changeGear, speedUp, and applyBrakes
+    // all be implemented. Compilation will fail if those
+    // methods are missing from this class.
 
-    void speedUp(int increment);
+    public void changeCadence(final int newValue)
+    {
+        cadence = newValue;
+    }
 
-    void applyBrakes(int decrement);
+    public void changeGear(final int newValue)
+    {
+        gear = newValue;
+    }
+
+    public void speedUp(final int increment)
+    {
+        speed = speed + increment;
+    }
+
+    public void applyBrakes(final int decrement)
+    {
+        speed = speed - decrement;
+    }
+
+    void printStates()
+    {
+        System.out.println("cadence:" +
+                cadence + " speed:" +
+                speed + " gear:" + gear);
+    }
 }

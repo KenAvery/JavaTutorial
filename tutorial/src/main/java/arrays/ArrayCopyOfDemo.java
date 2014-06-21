@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package arrays;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,21 +30,18 @@ package org.ken.avery.java.oracle;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class MultiDimArrayDemo
+public class ArrayCopyOfDemo
 {
     public static void main(final String[] args)
     {
-        final String[][] names = {
-                {
-                        "Mr. ", "Mrs. ", "Ms. "
-                },
-                {
-                        "Smith", "Jones"
-                }
+
+        final char[] copyFrom = {
+                'd', 'e', 'c', 'a', 'f', 'f', 'e',
+                'i', 'n', 'a', 't', 'e', 'd'
         };
-        // Mr. Smith
-        System.out.println(names[0][0] + names[1][0]);
-        // Ms. Jones
-        System.out.println(names[0][2] + names[1][1]);
+
+        final char[] copyTo = java.util.Arrays.copyOfRange(copyFrom, 2, 9);
+
+        System.out.println(new String(copyTo));
     }
 }

@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package arrays;
 
 import java.util.Arrays;
 

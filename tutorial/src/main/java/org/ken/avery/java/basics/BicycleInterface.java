@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package org.ken.avery.java.basics;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,10 +30,14 @@ package org.ken.avery.java.oracle;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class HelloWorld
+public interface BicycleInterface
 {
-    public static void main(final String[] args)
-    {
-        System.out.println("Hello World!");
-    }
+    //  wheel revolutions per minute
+    void changeCadence(int newValue);
+
+    void changeGear(int newValue);
+
+    void speedUp(int increment);
+
+    void applyBrakes(int decrement);
 }

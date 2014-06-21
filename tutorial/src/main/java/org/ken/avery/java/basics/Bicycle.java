@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package org.ken.avery.java.basics;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -31,29 +31,36 @@ package org.ken.avery.java.oracle;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-public class BicycleDemo
+public class Bicycle
 {
-    public static void main(final String[] args)
+    int cadence = 0;
+    int speed = 0;
+    int gear = 1;
+
+    void changeCadence(final int newValue)
     {
+        cadence = newValue;
+    }
 
-        // Create two different
-        // Bicycle objects
-        final Bicycle bike1 = new Bicycle();
-        final Bicycle bike2 = new Bicycle();
+    void changeGear(final int newValue)
+    {
+        gear = newValue;
+    }
 
-        // Invoke methods on
-        // those objects
-        bike1.changeCadence(50);
-        bike1.speedUp(10);
-        bike1.changeGear(2);
-        bike1.printStates();
+    void speedUp(final int increment)
+    {
+        speed = speed + increment;
+    }
 
-        bike2.changeCadence(50);
-        bike2.speedUp(10);
-        bike2.changeGear(2);
-        bike2.changeCadence(40);
-        bike2.speedUp(10);
-        bike2.changeGear(3);
-        bike2.printStates();
+    void applyBrakes(final int decrement)
+    {
+        speed = speed - decrement;
+    }
+
+    void printStates()
+    {
+        System.out.println("cadence:" +
+                cadence + " speed:" +
+                speed + " gear:" + gear);
     }
 }

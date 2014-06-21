@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package arrays;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,18 +30,17 @@ package org.ken.avery.java.oracle;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class ArrayCopyOfDemo
+public class ArrayCopyDemo
 {
     public static void main(final String[] args)
     {
-
         final char[] copyFrom = {
                 'd', 'e', 'c', 'a', 'f', 'f', 'e',
                 'i', 'n', 'a', 't', 'e', 'd'
         };
+        final char[] copyTo = new char[7];
 
-        final char[] copyTo = java.util.Arrays.copyOfRange(copyFrom, 2, 9);
-
+        System.arraycopy(copyFrom, 2, copyTo, 0, 7);
         System.out.println(new String(copyTo));
     }
 }

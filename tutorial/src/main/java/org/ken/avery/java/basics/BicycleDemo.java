@@ -1,4 +1,4 @@
-package org.ken.avery.java.oracle;
+package org.ken.avery.java.basics;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -31,15 +31,15 @@ package org.ken.avery.java.oracle;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-public class ACMEBicycleDemo
+public class BicycleDemo
 {
     public static void main(final String[] args)
     {
 
         // Create two different
         // Bicycle objects
-        final ACMEBicycle bike1 = new ACMEBicycle();
-        final ACMEBicycle bike2 = new ACMEBicycle();
+        final Bicycle bike1 = new Bicycle();
+        final Bicycle bike2 = new Bicycle();
 
         // Invoke methods on
         // those objects
