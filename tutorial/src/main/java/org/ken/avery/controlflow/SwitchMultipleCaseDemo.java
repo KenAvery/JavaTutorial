@@ -1,4 +1,6 @@
-package org.ken.avery.operators;
+package org.ken.avery.controlflow;
+
+import java.util.Random;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,41 +32,64 @@ package org.ken.avery.operators;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class ComparisonDemo
+public class SwitchMultipleCaseDemo
 {
     public static void main(final String[] args)
     {
-        final int value1 = returnValue(1);
-        final int value2 = returnValue(2);
 
-        if (value1 == value2)
-        {
-            System.out.println("value1 == value2");
-        }
+        final int month = returnMonth();
+        final int year = returnYear();
+        int numDays = 0;
 
-        if (value1 != value2)
+        switch (month)
         {
-            System.out.println("value1 != value2");
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                numDays = 31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                numDays = 30;
+                break;
+            case 2:
+                if (((year % 4 == 0) &&
+                        !(year % 100 == 0))
+                        || (year % 400 == 0))
+                {
+                    numDays = 29;
+                }
+                else
+                {
+                    numDays = 28;
+                }
+                break;
+            default:
+                System.out.println("Invalid month.");
+                break;
         }
-
-        if (value1 > value2)
-        {
-            System.out.println("value1 > value2");
-        }
-
-        if (value1 < value2)
-        {
-            System.out.println("value1 < value2");
-        }
-
-        if (value1 <= value2)
-        {
-            System.out.println("value1 <= value2");
-        }
+        System.out.println("Year: " + year + "\nMonth: " + month + "\nDays = " + numDays);
     }
 
-    public static int returnValue(final int value)
+    public static int returnYear()
     {
-        return value;
+        final int start = 1900;
+        final int end = 2014;
+
+        return start + (int) Math.round(Math.random() * (end - start));
+    }
+
+    public static int returnMonth()
+    {
+        final int numberOfMonths = 12 + 1;
+        final Random score = new Random();
+
+        return score.nextInt(numberOfMonths) + 1;
     }
 }

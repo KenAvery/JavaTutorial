@@ -34,8 +34,8 @@ public class ConditionalDemo
 {
     public static void main(final String[] args)
     {
-        final int value1 = 1;
-        final int value2 = 2;
+        final int value1 = returnValue(1);
+        final int value2 = returnValue(2);
 
         if ((value1 == 1) && (value2 == 2))
         {
@@ -46,5 +46,10 @@ public class ConditionalDemo
         {
             System.out.println("value1 is 1 OR value2 is 1");
         }
+    }
+
+    public static int returnValue(final int value)
+    {
+        return value;
     }
 }

@@ -1,4 +1,7 @@
-package org.ken.avery.operators;
+package org.ken.avery.controlflow;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,41 +33,64 @@ package org.ken.avery.operators;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class ComparisonDemo
+public class SwitchDemoFallThrough
 {
     public static void main(final String[] args)
     {
-        final int value1 = returnValue(1);
-        final int value2 = returnValue(2);
 
-        if (value1 == value2)
+        final ArrayList<String> futureMonths = new ArrayList<String>();
+
+        final int month = returnMonth();
+
+        switch (month)
         {
-            System.out.println("value1 == value2");
+            case 1:
+                futureMonths.add("January");
+            case 2:
+                futureMonths.add("February");
+            case 3:
+                futureMonths.add("March");
+            case 4:
+                futureMonths.add("April");
+            case 5:
+                futureMonths.add("May");
+            case 6:
+                futureMonths.add("June");
+            case 7:
+                futureMonths.add("July");
+            case 8:
+                futureMonths.add("August");
+            case 9:
+                futureMonths.add("September");
+            case 10:
+                futureMonths.add("October");
+            case 11:
+                futureMonths.add("November");
+            case 12:
+                futureMonths.add("December");
+                break;
+            default:
+                break;
         }
 
-        if (value1 != value2)
+        if (futureMonths.isEmpty())
         {
-            System.out.println("value1 != value2");
+            System.out.println("Invalid month number");
         }
-
-        if (value1 > value2)
+        else
         {
-            System.out.println("value1 > value2");
-        }
-
-        if (value1 < value2)
-        {
-            System.out.println("value1 < value2");
-        }
-
-        if (value1 <= value2)
-        {
-            System.out.println("value1 <= value2");
+            for (final String monthName : futureMonths)
+            {
+                System.out.println(monthName);
+            }
         }
     }
 
-    public static int returnValue(final int value)
+    public static int returnMonth()
     {
-        return value;
+        final int numberOfMonths = 12 + 1;
+        final Random score = new Random();
+
+        return score.nextInt(numberOfMonths) + 1;
     }
 }
