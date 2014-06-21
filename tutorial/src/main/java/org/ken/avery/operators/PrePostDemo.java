@@ -1,4 +1,4 @@
-package arrays;
+package org.ken.avery.operators;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,17 +30,28 @@ package arrays;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class ArrayCopyDemo
+public class PrePostDemo
 {
     public static void main(final String[] args)
     {
-        final char[] copyFrom = {
-                'd', 'e', 'c', 'a', 'f', 'f', 'e',
-                'i', 'n', 'a', 't', 'e', 'd'
-        };
-        final char[] copyTo = new char[7];
+        int i = 3;
+        System.out.println("i = " + i);
 
-        System.arraycopy(copyFrom, 2, copyTo, 0, 7);
-        System.out.println(new String(copyTo));
+        i++;
+        // prints 4
+        System.out.println("i++ : " + i);
+
+        ++i;
+        // prints 5
+        System.out.println("++i : " + i);
+
+        // prints 6
+        System.out.println("print ++i : " + ++i);
+
+        // prints 6
+        System.out.println("print i++ : " + i++);
+
+        // prints 7
+        System.out.println("i = " + i);
     }
 }

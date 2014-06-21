@@ -1,4 +1,4 @@
-package operators;
+package org.ken.avery.arrays;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,31 +30,17 @@ package operators;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class UnaryDemo
+public class ArrayCopyDemo
 {
     public static void main(final String[] args)
     {
-        // result is now 1
-        int result = +1;
-        System.out.println("result = +1: " + result);
+        final char[] copyFrom = {
+                'd', 'e', 'c', 'a', 'f', 'f', 'e',
+                'i', 'n', 'a', 't', 'e', 'd'
+        };
+        final char[] copyTo = new char[7];
 
-        // result is now 0
-        result--;
-        System.out.println("result--: " + result);
-
-        // result is now 1
-        result++;
-        System.out.println("result++: " + result);
-
-        // result is now -1
-        result = -result;
-        System.out.println("result = -result: " + result);
-
-        final boolean success = false;
-        // false
-        System.out.println("success = false: " + success);
-
-        // true
-        System.out.println("!success: " + !success);
+        System.arraycopy(copyFrom, 2, copyTo, 0, 7);
+        System.out.println(new String(copyTo));
     }
 }

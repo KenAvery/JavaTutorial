@@ -1,4 +1,4 @@
-package arrays;
+package org.ken.avery.arrays;
 
 import java.util.Arrays;
 

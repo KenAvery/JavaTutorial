@@ -1,4 +1,4 @@
-package operators;
+package org.ken.avery.operators;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,28 +30,31 @@ package operators;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class PrePostDemo
+public class UnaryDemo
 {
     public static void main(final String[] args)
     {
-        int i = 3;
-        System.out.println("i = " + i);
+        // result is now 1
+        int result = +1;
+        System.out.println("result = +1: " + result);
 
-        i++;
-        // prints 4
-        System.out.println("i++ : " + i);
+        // result is now 0
+        result--;
+        System.out.println("result--: " + result);
 
-        ++i;
-        // prints 5
-        System.out.println("++i : " + i);
+        // result is now 1
+        result++;
+        System.out.println("result++: " + result);
 
-        // prints 6
-        System.out.println("print ++i : " + ++i);
+        // result is now -1
+        result = -result;
+        System.out.println("result = -result: " + result);
 
-        // prints 6
-        System.out.println("print i++ : " + i++);
+        final boolean success = false;
+        // false
+        System.out.println("success = false: " + success);
 
-        // prints 7
-        System.out.println("i = " + i);
+        // true
+        System.out.println("!success: " + !success);
     }
 }
