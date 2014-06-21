@@ -1,5 +1,7 @@
 package org.ken.avery.controlflow;
 
+import java.util.Random;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -30,79 +32,66 @@ package org.ken.avery.controlflow;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class StringSwitchDemo
+public class BreakWithLabelDemo
 {
-    public static int getMonthNumber(final String month)
-    {
-
-        int monthNumber = 0;
-
-        if (month == null)
-        {
-            return monthNumber;
-        }
-
-        switch (month.toLowerCase())
-        {
-            case "january":
-                monthNumber = 1;
-                break;
-            case "february":
-                monthNumber = 2;
-                break;
-            case "march":
-                monthNumber = 3;
-                break;
-            case "april":
-                monthNumber = 4;
-                break;
-            case "may":
-                monthNumber = 5;
-                break;
-            case "june":
-                monthNumber = 6;
-                break;
-            case "july":
-                monthNumber = 7;
-                break;
-            case "august":
-                monthNumber = 8;
-                break;
-            case "september":
-                monthNumber = 9;
-                break;
-            case "october":
-                monthNumber = 10;
-                break;
-            case "november":
-                monthNumber = 11;
-                break;
-            case "december":
-                monthNumber = 12;
-                break;
-            default:
-                monthNumber = 0;
-                break;
-        }
-
-        return monthNumber;
-    }
-
     public static void main(final String[] args)
     {
 
-        final String month = "August";
+        final int[][] arrayOfInts = {
+                {
+                        32, 87, 3, 589
+                },
+                {
+                        12, 1076, 2000, 8
+                },
+                {
+                        622, 127, 77, 955
+                }
+        };
 
-        final int returnedMonthNumber =
-                StringSwitchDemo.getMonthNumber(month);
-
-        if (returnedMonthNumber == 0)
+        for (int i = 0; i < arrayOfInts.length; i++)
         {
-            System.out.println("Invalid month");
+            for (int j = 0; j < arrayOfInts[i].length; j++)
+            {
+                System.out.println("Index [" + i + ", " + j + "] = " + arrayOfInts[i][j]);
+            }
+        }
+
+        final int searchfor = returnSearchFor(arrayOfInts);
+
+        int i;
+        int j = 0;
+        boolean foundIt = false;
+
+        search: for (i = 0; i < arrayOfInts.length; i++)
+        {
+            for (j = 0; j < arrayOfInts[i].length; j++)
+            {
+                if (arrayOfInts[i][j] == searchfor)
+                {
+                    foundIt = true;
+                    break search;
+                }
+            }
+        }
+
+        if (foundIt)
+        {
+            System.out.println("\nFound " + searchfor + " at index [" + i + ", " + j + "]");
         }
         else
         {
-            System.out.println("Month: " + returnedMonthNumber);
+            System.out.println(searchfor + "\n not in the array");
         }
+    }
+
+    public static int returnSearchFor(final int[][] arrayOfInts)
+    {
+        final Random random = new Random();
+
+        final int x = random.nextInt(arrayOfInts.length);
+        final int y = random.nextInt(arrayOfInts[x].length);
+
+        return arrayOfInts[x][y];
     }
 }

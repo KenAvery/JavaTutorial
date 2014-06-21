@@ -30,79 +30,18 @@ package org.ken.avery.controlflow;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class StringSwitchDemo
+public class EnhancedForDemo
 {
-    public static int getMonthNumber(final String month)
-    {
-
-        int monthNumber = 0;
-
-        if (month == null)
-        {
-            return monthNumber;
-        }
-
-        switch (month.toLowerCase())
-        {
-            case "january":
-                monthNumber = 1;
-                break;
-            case "february":
-                monthNumber = 2;
-                break;
-            case "march":
-                monthNumber = 3;
-                break;
-            case "april":
-                monthNumber = 4;
-                break;
-            case "may":
-                monthNumber = 5;
-                break;
-            case "june":
-                monthNumber = 6;
-                break;
-            case "july":
-                monthNumber = 7;
-                break;
-            case "august":
-                monthNumber = 8;
-                break;
-            case "september":
-                monthNumber = 9;
-                break;
-            case "october":
-                monthNumber = 10;
-                break;
-            case "november":
-                monthNumber = 11;
-                break;
-            case "december":
-                monthNumber = 12;
-                break;
-            default:
-                monthNumber = 0;
-                break;
-        }
-
-        return monthNumber;
-    }
-
     public static void main(final String[] args)
     {
+        final int[] numbers =
+            {
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            };
 
-        final String month = "August";
-
-        final int returnedMonthNumber =
-                StringSwitchDemo.getMonthNumber(month);
-
-        if (returnedMonthNumber == 0)
+        for (final int item : numbers)
         {
-            System.out.println("Invalid month");
-        }
-        else
-        {
-            System.out.println("Month: " + returnedMonthNumber);
+            System.out.println("Count is: " + item);
         }
     }
 }

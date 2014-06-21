@@ -30,79 +30,38 @@ package org.ken.avery.controlflow;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class StringSwitchDemo
+public class BreakDemo
 {
-    public static int getMonthNumber(final String month)
-    {
-
-        int monthNumber = 0;
-
-        if (month == null)
-        {
-            return monthNumber;
-        }
-
-        switch (month.toLowerCase())
-        {
-            case "january":
-                monthNumber = 1;
-                break;
-            case "february":
-                monthNumber = 2;
-                break;
-            case "march":
-                monthNumber = 3;
-                break;
-            case "april":
-                monthNumber = 4;
-                break;
-            case "may":
-                monthNumber = 5;
-                break;
-            case "june":
-                monthNumber = 6;
-                break;
-            case "july":
-                monthNumber = 7;
-                break;
-            case "august":
-                monthNumber = 8;
-                break;
-            case "september":
-                monthNumber = 9;
-                break;
-            case "october":
-                monthNumber = 10;
-                break;
-            case "november":
-                monthNumber = 11;
-                break;
-            case "december":
-                monthNumber = 12;
-                break;
-            default:
-                monthNumber = 0;
-                break;
-        }
-
-        return monthNumber;
-    }
-
     public static void main(final String[] args)
     {
 
-        final String month = "August";
-
-        final int returnedMonthNumber =
-                StringSwitchDemo.getMonthNumber(month);
-
-        if (returnedMonthNumber == 0)
+        final int[] arrayOfInts =
         {
-            System.out.println("Invalid month");
+                32, 87, 3, 589,
+                12, 1076, 2000,
+                8, 622, 127
+        };
+
+        final int searchfor = 12;
+
+        int i;
+        boolean foundIt = false;
+        for (i = 0; i < arrayOfInts.length; i++)
+        {
+            if (arrayOfInts[i] == searchfor)
+            {
+                foundIt = true;
+                break;
+            }
+        }
+
+        if (foundIt)
+        {
+            System.out.println("Found " + searchfor + " at index " + i);
         }
         else
         {
-            System.out.println("Month: " + returnedMonthNumber);
+            System.out.println(searchfor + " not in the array");
         }
     }
 }
