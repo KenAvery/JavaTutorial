@@ -47,6 +47,7 @@ public class LocalClassExample
 
             PhoneNumber(final String phoneNumber)
             {
+                // Valid in JDK 8 and later - generates a compiler error:
                 //                numberLength = 7;
                 final String currentNumber = phoneNumber.replaceAll(regularExpression, "");
                 if (currentNumber.length() == numberLength)
