@@ -189,82 +189,70 @@ public class RosterTest
             }
         }
 
-        printPersons(
-                roster, new CheckPersonEligibleForSelectiveService());
+        printPersons(roster, new CheckPersonEligibleForSelectiveService());
 
         System.out.println();
 
         // Approach 4: Specify Search Criteria Code in an Anonymous Class
 
-        System.out.println("Persons who are eligible for Selective Service " +
-                "(anonymous class):");
+        System.out.println("Persons who are eligible for Selective Service " + "(anonymous class):");
 
-        printPersons(
-                roster,
-                new CheckPerson()
-                {
-                    @Override
-                    public boolean test(final Person p)
-                    {
-                        return p.getGender() == Person.Sex.MALE
-                                && p.getAge() >= 18
-                                && p.getAge() <= 25;
-                    }
-                });
+        printPersons(roster, new CheckPerson()
+        {
+            @Override
+            public boolean test(final Person p)
+            {
+                return p.getGender() == Person.Sex.MALE
+                        && p.getAge() >= 18
+                        && p.getAge() <= 25;
+            }
+        });
 
         System.out.println();
 
         // Approach 5: Specify Search Criteria Code with a Lambda Expression
 
-        System.out.println("Persons who are eligible for Selective Service " +
-                "(lambda expression):");
+        System.out.println("Persons who are eligible for Selective Service " + "(lambda expression):");
 
-        printPersons(
-                roster,
+        printPersons(roster,
                 (final Person p) -> p.getGender() == Person.Sex.MALE
-                        && p.getAge() >= 18
-                        && p.getAge() <= 25);
+                && p.getAge() >= 18
+                && p.getAge() <= 25);
 
         System.out.println();
 
-        // Approach 6: Use Standard Functional Interfaces with Lambda
-        // Expressions
+        // Approach 6: Use Standard Functional Interfaces with Lambda Expressions
 
-        System.out.println("Persons who are eligible for Selective Service " +
-                "(with Predicate parameter):");
+        System.out.println("Persons who are eligible for Selective Service " + "(with Predicate parameter):");
 
-        printPersonsWithPredicate(
-                roster,
+        printPersonsWithPredicate(roster,
                 p -> p.getGender() == Person.Sex.MALE
-                        && p.getAge() >= 18
-                        && p.getAge() <= 25);
+                && p.getAge() >= 18
+                && p.getAge() <= 25);
 
         System.out.println();
 
         // Approach 7: Use Lamba Expressions Throughout Your Application
 
-        System.out.println("Persons who are eligible for Selective Service " +
-                "(with Predicate and Consumer parameters):");
+        System.out.println("Persons who are eligible for Selective Service " + "(with Predicate and Consumer parameters):");
 
-        processPersons(
-                roster,
+        processPersons(roster,
                 p -> p.getGender() == Person.Sex.MALE
-                        && p.getAge() >= 18
-                        && p.getAge() <= 25,
+                && p.getAge() >= 18
+                && p.getAge() <= 25,
                 p -> p.printPerson());
 
         System.out.println();
 
         // Approach 7, second example
 
-        System.out.println("Persons who are eligible for Selective Service " +
-                "(with Predicate, Function, and Consumer parameters):");
+        System.out.println("Persons who are eligible for Selective Service "
+                + "(with Predicate, Function, and Consumer parameters):");
 
-        processPersonsWithFunction(
-                roster,
+        processPersonsWithFunction(roster,
                 p -> p.getGender() == Person.Sex.MALE
-                        && p.getAge() >= 18
-                        && p.getAge() <= 25,
+                && p.getAge() >= 18
+                && p.getAge() <= 25,
                 p -> p.getEmailAddress(),
                 email -> System.out.println(email));
 
@@ -272,29 +260,25 @@ public class RosterTest
 
         // Approach 8: Use Generics More Extensively
 
-        System.out.println("Persons who are eligible for Selective Service " +
-                "(generic version):");
+        System.out.println("Persons who are eligible for Selective Service " + "(generic version):");
 
-        processElements(
-                roster,
+        processElements(roster,
                 p -> p.getGender() == Person.Sex.MALE
-                        && p.getAge() >= 18
-                        && p.getAge() <= 25,
+                && p.getAge() >= 18
+                && p.getAge() <= 25,
                 p -> p.getEmailAddress(),
                 email -> System.out.println(email));
 
         System.out.println();
 
-        // Approach 9: Use Bulk Data Operations That Accept Lambda Expressions
-        // as Parameters
+        // Approach 9: Use Bulk Data Operations That Accept Lambda Expressions as Parameters
 
-        System.out.println("Persons who are eligible for Selective Service " +
-                "(with bulk data operations):");
+        System.out.println("Persons who are eligible for Selective Service " + "(with bulk data operations):");
 
         roster.stream().filter(
                 p -> p.getGender() == Person.Sex.MALE
-                        && p.getAge() >= 18
-                        && p.getAge() <= 25)
+                && p.getAge() >= 18
+                && p.getAge() <= 25)
                 .map(p -> p.getEmailAddress())
                 .forEach(email -> System.out.println(email));
     }
