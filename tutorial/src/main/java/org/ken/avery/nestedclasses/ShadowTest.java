@@ -1,4 +1,4 @@
-package org.ken.avery.objects;
+package org.ken.avery.nestedclasses;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -30,69 +30,27 @@ package org.ken.avery.objects;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-public class Bicycle
+public class ShadowTest
 {
-    private int cadence;
-    private int gear;
-    private int speed;
+    public int x = 0;
 
-    private final int id;
-
-    private static int numberOfBicycles = 0;
-
-    public Bicycle(final int startCadence,
-            final int startSpeed,
-            final int startGear)
+    class FirstLevel
     {
-        gear = startGear;
-        cadence = startCadence;
-        speed = startSpeed;
 
-        id = ++numberOfBicycles;
+        public int x = 1;
+
+        void methodInFirstLevel(final int x)
+        {
+            System.out.println("x = " + x);
+            System.out.println("this.x = " + this.x);
+            System.out.println("ShadowTest.this.x = " + ShadowTest.this.x);
+        }
     }
 
-    public int getID()
+    public static void main(final String... args)
     {
-        return id;
-    }
-
-    public static int getNumberOfBicycles()
-    {
-        return numberOfBicycles;
-    }
-
-    public int getCadence()
-    {
-        return cadence;
-    }
-
-    public void setCadence(final int newValue)
-    {
-        cadence = newValue;
-    }
-
-    public int getGear()
-    {
-        return gear;
-    }
-
-    public void setGear(final int newValue)
-    {
-        gear = newValue;
-    }
-
-    public int getSpeed()
-    {
-        return speed;
-    }
-
-    public void applyBrake(final int decrement)
-    {
-        speed -= decrement;
-    }
-
-    public void speedUp(final int increment)
-    {
-        speed += increment;
+        final ShadowTest st = new ShadowTest();
+        final ShadowTest.FirstLevel fl = st.new FirstLevel();
+        fl.methodInFirstLevel(23);
     }
 }
