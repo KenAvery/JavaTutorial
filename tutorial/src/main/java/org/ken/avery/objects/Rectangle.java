@@ -39,38 +39,38 @@ public class Rectangle
     // four constructors
     public Rectangle()
     {
-        origin = new Point(0, 0);
+        this.origin = new Point(0, 0);
     }
 
     public Rectangle(final Point p)
     {
-        origin = p;
+        this.origin = p;
     }
 
     public Rectangle(final int w, final int h)
     {
-        origin = new Point(0, 0);
-        width = w;
-        height = h;
+        this.origin = new Point(0, 0);
+        this.width = w;
+        this.height = h;
     }
 
     public Rectangle(final Point p, final int w, final int h)
     {
-        origin = p;
-        width = w;
-        height = h;
+        this.origin = p;
+        this.width = w;
+        this.height = h;
     }
 
     // a method for moving the rectangle
     public void move(final int x, final int y)
     {
-        origin.x = x;
-        origin.y = y;
+        this.origin.x = x;
+        this.origin.y = y;
     }
 
     // a method for computing the area of the rectangle
     public int getArea()
     {
-        return width * height;
+        return this.width * this.height;
     }
 }

@@ -39,7 +39,7 @@ public class Point
     // a constructor!
     public Point(final int a, final int b)
     {
-        x = a;
-        y = b;
+        this.x = a;
+        this.y = b;
     }
 }
