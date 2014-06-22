@@ -42,8 +42,7 @@ import java.util.function.Supplier;
 public class MethodReferencesTest
 {
 
-    // The method transferElements copies elements from one collection to
-    // another
+    // The method transferElements copies elements from one collection to another
 
     public static <T, SOURCE extends Collection<T>, DEST extends Collection<T>>
     DEST transferElements(
@@ -119,13 +118,11 @@ public class MethodReferencesTest
         };
         Arrays.sort(stringArray, String::compareToIgnoreCase);
 
-        final Set<Person> rosterSetLambda =
-                transferElements(roster, () -> {
-                    return new HashSet<>();
-                });
+        final Set<Person> rosterSetLambda = transferElements(roster, () -> {
+            return new HashSet<>();
+        });
 
-        final Set<Person> rosterSet = transferElements(
-                roster, HashSet::new);
+        final Set<Person> rosterSet = transferElements(roster, HashSet::new);
         System.out.println("Printing rosterSet:");
         rosterSet.stream().forEach(p -> p.printPerson());
     }
