@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Vector;
@@ -116,21 +115,13 @@ public class ListOfNumbers
     }
 
     public void deleteFile()
+            throws IOException
     {
+        // Throw the IOException and let the caller further up the stack handle it
         final Path path = Paths.get(fileName);
-        try
-        {
-            System.out.format("Deleting file %s:", path);
-            Files.delete(path);
-        }
-        catch (final NoSuchFileException x)
-        {
-            System.err.format("%s: no such" + " file or directory%n", path);
-        }
-        catch (final IOException x)
-        {
-            System.err.println(x);
-        }
+        System.out.format("Deleting file %s:", path);
+        Files.delete(path);
+
     }
 
     public static void main(final String[] args)
@@ -139,6 +130,13 @@ public class ListOfNumbers
 
         listOfNumbers.writeList();
         listOfNumbers.readList();
-        listOfNumbers.deleteFile();
+        try
+        {
+            listOfNumbers.deleteFile();
+        }
+        catch (final IOException e)
+        {
+            System.err.println("Caught IOException deleteing the file: " + e.getMessage());
+        }
     }
 }
