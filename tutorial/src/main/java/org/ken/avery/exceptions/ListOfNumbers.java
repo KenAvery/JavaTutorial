@@ -94,14 +94,14 @@ public class ListOfNumbers
 
     public void readList()
     {
-        BufferedReader br = null;
 
-        try
+        // Using Try with resource - finally is not needed to close the file
+        // BufferedReader in Java 7 implements java.lang.AutoClosable
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName)))
         {
             String line;
 
             System.out.println("Entering reader try statement");
-            br = new BufferedReader(new FileReader(fileName));
 
             while ((line = br.readLine()) != null)
             {
@@ -112,26 +112,7 @@ public class ListOfNumbers
         {
             System.err.println("Caught IOException opening BufferedReader: " + e.getMessage());
         }
-        finally
-        {
 
-            try
-            {
-                if (br != null)
-                {
-                    System.out.println("Closing BufferedReader");
-                    br.close();
-                }
-                else
-                {
-                    System.out.println("BufferedReader not open");
-                }
-            }
-            catch (final IOException e)
-            {
-                System.err.println("Caught IOException closing BufferedReader: " + e.getMessage());
-            }
-        }
     }
 
     public void deleteFile()
