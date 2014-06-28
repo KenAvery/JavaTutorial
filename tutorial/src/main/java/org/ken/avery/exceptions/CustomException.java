@@ -4,11 +4,13 @@ public class CustomException extends Exception
 {
     private static final long serialVersionUID = 1L;
 
+    final static String defaultMessage = "Custom Exception Default Message";
     private String exceptionMessage = null;
 
     public CustomException()
     {
-        super();
+        super(defaultMessage);
+        this.exceptionMessage = defaultMessage;
     }
 
     public CustomException(final String message)
