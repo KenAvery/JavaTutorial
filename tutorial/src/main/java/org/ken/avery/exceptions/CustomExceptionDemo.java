@@ -60,12 +60,10 @@ public class CustomExceptionDemo
     {
         try
         {
-            System.out.println("Try throws exception");
             throw new NullPointerException();
         }
         catch (final NullPointerException e)
         {
-            System.out.println("Caught in throws exception");
             throw new CustomException(e);
         }
     }
