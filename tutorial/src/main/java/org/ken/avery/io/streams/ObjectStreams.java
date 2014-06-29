@@ -71,8 +71,7 @@ public class ObjectStreams
         ObjectOutputStream out = null;
         try
         {
-            out = new ObjectOutputStream(new
-                    BufferedOutputStream(new FileOutputStream(dataFile)));
+            out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(dataFile)));
 
             out.writeObject(Calendar.getInstance());
             for (int i = 0; i < prices.length; i++)
@@ -90,8 +89,7 @@ public class ObjectStreams
         ObjectInputStream in = null;
         try
         {
-            in = new ObjectInputStream(new
-                    BufferedInputStream(new FileInputStream(dataFile)));
+            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(dataFile)));
 
             Calendar date = null;
             BigDecimal price;
