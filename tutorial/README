@@ -1,3 +1,12 @@
 Learning Java
+Organized By Ken Avery
 
-Ken Avery
+This tutorial follows the Oracle Java Tutorials: http://docs.oracle.com/javase/tutorial/index.html
+For the most part it is the same code presented; though, the code is enhanced or additional code
+is added to help clarify and demonstrate concepts.
+
+OS: Windows 7
+IDE: STS 3.5.1
+Java 8
+Maven 3.2.1
+
