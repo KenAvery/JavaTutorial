@@ -3,13 +3,13 @@ package org.ken.avery.concurrency;
 public class UnpredictableCounter extends Thread
 {
 
-    Counter counter;
+    UnpredictableCount counter;
 
     public static void main(final String[] args)
     {
         for (int i = 0; i < 10; i++)
         {
-            final Counter counter = new Counter();
+            final UnpredictableCount counter = new UnpredictableCount();
             final UnpredictableCounter counterThread1 = new UnpredictableCounter(counter);
             final UnpredictableCounter counterThread2 = new UnpredictableCounter(counter);
 
@@ -31,7 +31,7 @@ public class UnpredictableCounter extends Thread
 
     }
 
-    public UnpredictableCounter(final Counter counter)
+    public UnpredictableCounter(final UnpredictableCount counter)
     {
         this.counter = counter;
     }

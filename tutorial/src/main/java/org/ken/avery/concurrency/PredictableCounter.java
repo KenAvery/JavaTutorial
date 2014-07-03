@@ -2,13 +2,13 @@ package org.ken.avery.concurrency;
 
 public class PredictableCounter extends Thread
 {
-    SynchronizedCounter counter;
+    SynchronizedCount counter;
 
     public static void main(final String[] args)
     {
         for (int i = 0; i < 10; i++)
         {
-            final SynchronizedCounter counter = new SynchronizedCounter();
+            final SynchronizedCount counter = new SynchronizedCount();
             final PredictableCounter counterThread1 = new PredictableCounter(counter);
             final PredictableCounter counterThread2 = new PredictableCounter(counter);
 
@@ -30,7 +30,7 @@ public class PredictableCounter extends Thread
 
     }
 
-    public PredictableCounter(final SynchronizedCounter counter)
+    public PredictableCounter(final SynchronizedCount counter)
     {
         this.counter = counter;
     }

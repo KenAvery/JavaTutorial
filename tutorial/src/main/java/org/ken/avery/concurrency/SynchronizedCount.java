@@ -1,11 +1,11 @@
 package org.ken.avery.concurrency;
 
-public class Counter
+public class SynchronizedCount
 {
     private int i = 0;
     private final int sleepTime = (int) (Math.random() * 10);
 
-    public void iterate()
+    public synchronized void iterate()
     {
         for (int j = 0; j < 100; j++)
         {

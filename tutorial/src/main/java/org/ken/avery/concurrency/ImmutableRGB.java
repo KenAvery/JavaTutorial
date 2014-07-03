@@ -31,28 +31,28 @@ package org.ken.avery.concurrency;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-public class SynchronizedRGB
+final public class ImmutableRGB
 {
 
     // Values must be between 0 and 255.
-    private int red;
-    private int green;
-    private int blue;
-    private String name;
+    final private int red;
+    final private int green;
+    final private int blue;
+    final private String name;
 
-    private void check(
-            final int red,
+    private void check(final int red,
             final int green,
             final int blue)
     {
-        if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255)
+        if (red < 0 || red > 255
+                || green < 0 || green > 255
+                || blue < 0 || blue > 255)
         {
             throw new IllegalArgumentException();
         }
     }
 
-    public SynchronizedRGB(
-            final int red,
+    public ImmutableRGB(final int red,
             final int green,
             final int blue,
             final String name)
@@ -64,37 +64,21 @@ public class SynchronizedRGB
         this.name = name;
     }
 
-    public void set(
-            final int red,
-            final int green,
-            final int blue,
-            final String name)
-    {
-        check(red, green, blue);
-        synchronized (this)
-        {
-            this.red = red;
-            this.green = green;
-            this.blue = blue;
-            this.name = name;
-        }
-    }
-
-    public synchronized int getRGB()
+    public int getRGB()
     {
         return ((red << 16) | (green << 8) | blue);
     }
 
-    public synchronized String getName()
+    public String getName()
     {
         return name;
     }
 
-    public synchronized void invert()
+    public ImmutableRGB invert()
     {
-        red = 255 - red;
-        green = 255 - green;
-        blue = 255 - blue;
-        name = "Inverse of " + name;
+        return new ImmutableRGB(255 - red,
+                255 - green,
+                255 - blue,
+                "Inverse of " + name);
     }
 }
