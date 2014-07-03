@@ -1,6 +1,7 @@
 package org.ken.avery.concurrency;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -14,6 +15,8 @@ public class WorkerPool
     private static final TimeUnit KEEP_ALIVE_TIME_UNITS = TimeUnit.SECONDS;
     private static final int JOBS = 10;
     private static final int MONITOR_INTERVAL_SECONDS = 3;
+
+    static BlockingQueue<String> queue = new ArrayBlockingQueue<String>(1);
 
     public static void main(final String args[])
             throws InterruptedException
@@ -35,7 +38,7 @@ public class WorkerPool
                 rejectionHandler);
 
         //start the thread pool monitor
-        final ThreadPoolMonitor threadPoolMonitor = new ThreadPoolMonitor(executorPool, MONITOR_INTERVAL_SECONDS);
+        final ThreadPoolMonitor threadPoolMonitor = new ThreadPoolMonitor(executorPool, MONITOR_INTERVAL_SECONDS, queue);
         final Thread monitorThread = new Thread(threadPoolMonitor);
         monitorThread.start();
 
@@ -45,7 +48,9 @@ public class WorkerPool
             executorPool.execute(new WorkerThread(i + 1));
         }
 
-        Thread.sleep(30000);
+        // When the completed tasks = total tasks
+        // the thread pool monitor sends SHUTDOWN
+        System.out.println("Received: " + queue.take());
 
         //shut down the pool
         executorPool.shutdown();

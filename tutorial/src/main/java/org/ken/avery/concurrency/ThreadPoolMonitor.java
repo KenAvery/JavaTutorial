@@ -1,16 +1,19 @@
 package org.ken.avery.concurrency;
 
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class ThreadPoolMonitor implements Runnable
 {
     private final ThreadPoolExecutor executor;
     private final int interval;
+    private BlockingQueue<String> queue = null;
 
-    public ThreadPoolMonitor(final ThreadPoolExecutor executor, final int seconds)
+    public ThreadPoolMonitor(final ThreadPoolExecutor executor, final int seconds, final BlockingQueue<String> queue)
     {
         this.executor = executor;
         this.interval = seconds;
+        this.queue = queue;
     }
 
     @Override
@@ -26,11 +29,20 @@ public class ThreadPoolMonitor implements Runnable
                     this.executor.getCompletedTaskCount(),
                     this.executor.getTaskCount());
 
-            if (this.executor.isShutdown() && this.executor.isTerminated())
+            if (this.executor.getCompletedTaskCount() == this.executor.getTaskCount())
             {
-                System.out.println("Executor terminated");
+                try
+                {
+                    queue.put("SHUTDOWN");
+                }
+                catch (final InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
+
                 break;
             }
+
             try
             {
                 Thread.sleep(interval * 1000);
