@@ -1,6 +1,5 @@
 package org.ken.avery.concurrency;
 
-import java.util.NavigableSet;
 import java.util.concurrent.ConcurrentNavigableMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ExecutorService;
@@ -37,12 +36,14 @@ public class ConcurrentNavigationMapExample
             e.printStackTrace();
         }
 
-        System.out.println("Mapping = " + concurrentNavigableMap);
-
-        final NavigableSet<Integer> navigableSet = concurrentNavigableMap.keySet();
-        System.out.println("Set of keys = " + navigableSet);
-
-        System.out.println("Size of map = " + concurrentNavigableMap.size());
-
+        System.out.printf("Size of map    : %s%n", concurrentNavigableMap.size());
+        System.out.printf("Set of keys    : %s%n", concurrentNavigableMap.keySet());
+        System.out.printf("Descending Set : %s%n", concurrentNavigableMap.descendingKeySet());
+        System.out.printf("Floor Entry (5): %s%n", concurrentNavigableMap.floorEntry(5));
+        System.out.printf("First Entry    : %s%n", concurrentNavigableMap.firstEntry());
+        System.out.printf("Last Key       : %s%n", concurrentNavigableMap.lastKey());
+        System.out.printf("First Key      : %s%n", concurrentNavigableMap.firstKey());
+        System.out.printf("Original Map   : %s%n", concurrentNavigableMap);
+        System.out.printf("Reverse Map    : %s%n", concurrentNavigableMap.descendingMap());
     }
 }
