@@ -5,14 +5,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TaskThreadLocalRandom extends ForkJoinTask<String>
 {
+    private static final long serialVersionUID = 1L;
     private String msg = null;
 
     public TaskThreadLocalRandom(final String msg)
     {
         this.msg = msg;
     }
-
-    private static final long serialVersionUID = 1L;
 
     @Override
     protected boolean exec()
