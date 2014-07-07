@@ -29,11 +29,14 @@ public class NavigableSetDemo
         }
         System.out.format("%n%n");
 
+        System.out.printf("Size                       : %d%n", navigableSet.size());
         System.out.printf("Head Set (X)               : %s.%n", navigableSet.headSet("X"));
         System.out.printf("Tail Set (T, true)         : %s.%n", navigableSet.tailSet("T", false));
         System.out.printf("Sub Set  (B, true, X, true): %s.%n", navigableSet.subSet("B", true, "X", true));
         System.out.printf("Last Element               : %s%n", navigableSet.last());
         System.out.printf("First Element              : %s%n", navigableSet.first());
+        System.out.printf("Floor Element              : %s%n", navigableSet.floor("T"));
+        System.out.printf("Ceiling Element            : %s%n", navigableSet.ceiling("T"));
         System.out.printf("Reverse Set                : %s%n", navigableSet.descendingSet());
         System.out.printf("Original Set               : %s%n", navigableSet);
     }
