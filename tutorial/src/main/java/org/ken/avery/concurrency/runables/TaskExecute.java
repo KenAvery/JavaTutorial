@@ -2,7 +2,7 @@ package org.ken.avery.concurrency.runables;
 
 import java.util.concurrent.ForkJoinTask;
 
-class TaskExecute extends ForkJoinTask<String>
+public class TaskExecute extends ForkJoinTask<String>
 {
     private static final long serialVersionUID = 1L;
 

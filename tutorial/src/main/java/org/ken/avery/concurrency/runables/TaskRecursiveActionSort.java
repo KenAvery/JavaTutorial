@@ -3,7 +3,7 @@ package org.ken.avery.concurrency.runables;
 import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
 
-class TaskRecursiveActionSort extends RecursiveAction
+public class TaskRecursiveActionSort extends RecursiveAction
 {
     private static final long serialVersionUID = 1L;
 
@@ -20,7 +20,7 @@ class TaskRecursiveActionSort extends RecursiveAction
         this.hi = hi;
     }
 
-    TaskRecursiveActionSort(final long[] array)
+    public TaskRecursiveActionSort(final long[] array)
     {
         this(array, 0, array.length);
     }

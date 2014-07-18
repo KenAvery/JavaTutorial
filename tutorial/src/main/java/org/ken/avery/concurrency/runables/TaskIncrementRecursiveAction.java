@@ -12,7 +12,7 @@ public class TaskIncrementRecursiveAction extends RecursiveAction
     final long[] array;
     final int lo, hi;
 
-    TaskIncrementRecursiveAction(final long[] array, final int lo, final int hi)
+    public TaskIncrementRecursiveAction(final long[] array, final int lo, final int hi)
     {
         this.array = array;
         this.lo = lo;
@@ -41,7 +41,7 @@ public class TaskIncrementRecursiveAction extends RecursiveAction
         {
             // This code has a bug - needs to be fixed
             final int mid = (lo + hi) >>> 1;
-            invokeAll(new TaskIncrementRecursiveAction(array, lo, mid), new TaskIncrementRecursiveAction(array, mid, hi));
+        invokeAll(new TaskIncrementRecursiveAction(array, lo, mid), new TaskIncrementRecursiveAction(array, mid, hi));
         }
 
         System.out.println("Incramented Longs: ");

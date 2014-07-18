@@ -10,7 +10,7 @@ public class TaskConcurrentSkipListMap implements Runnable
     private static Semaphore semaphore = null;
     private static ConcurrentSkipListMap<Integer, String> concurrentSkipListMap = null;
 
-    TaskConcurrentSkipListMap(
+    public TaskConcurrentSkipListMap(
             final Semaphore semaphore,
             final Integer key,
             final String name,

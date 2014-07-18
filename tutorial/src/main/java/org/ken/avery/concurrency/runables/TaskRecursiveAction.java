@@ -2,7 +2,7 @@ package org.ken.avery.concurrency.runables;
 
 import java.util.concurrent.RecursiveAction;
 
-class TaskRecursiveAction extends RecursiveAction
+public class TaskRecursiveAction extends RecursiveAction
 {
     private static final long serialVersionUID = 1L;
 

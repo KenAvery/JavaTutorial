@@ -10,7 +10,7 @@ public class TaskReliableConcurrentHashMap implements Runnable
     private static Semaphore semaphore = null;
     private static Map<Integer, String> concurrentHashMap = null;
 
-    TaskReliableConcurrentHashMap(
+    public TaskReliableConcurrentHashMap(
             final Semaphore semaphore,
             final Integer key,
             final String threadname,

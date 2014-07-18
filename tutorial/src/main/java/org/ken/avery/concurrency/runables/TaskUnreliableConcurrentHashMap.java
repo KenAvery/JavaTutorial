@@ -8,15 +8,15 @@ public class TaskUnreliableConcurrentHashMap implements Runnable
     private final String threadname;
     private static Map<Integer, String> concurrentHashMap = null;
 
-    TaskUnreliableConcurrentHashMap(
+    public TaskUnreliableConcurrentHashMap(
             final Integer key,
             final String threadname,
             final Map<Integer, String> concurrentHashMap)
-            {
+    {
         this.key = key;
         this.threadname = threadname;
         TaskUnreliableConcurrentHashMap.concurrentHashMap = concurrentHashMap;
-            }
+    }
 
     @Override
     public void run()

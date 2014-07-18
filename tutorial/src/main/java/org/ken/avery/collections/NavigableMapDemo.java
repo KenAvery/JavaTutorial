@@ -1,4 +1,4 @@
-package org.ken.avery.concurrency.examples;
+package org.ken.avery.collections;
 
 import java.util.NavigableMap;
 import java.util.TreeMap;
