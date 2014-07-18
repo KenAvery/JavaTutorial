@@ -11,8 +11,9 @@ import java.util.concurrent.TimeUnit;
 
 public class FunWithQueues
 {
-    private static final int PERMITS = 10;
-    private static final int QUEUE_ENTRIES = 100;
+    private static final int JOBS = 5;
+    private static final int PERMITS = 1;
+    private static final int QUEUE_ENTRIES = 50;
 
     final static BlockingQueue<String> threadQueue = new ArrayBlockingQueue<String>(1);
     private static Queue<Integer> queue = new LinkedList<Integer>();
@@ -22,6 +23,15 @@ public class FunWithQueues
     {
         final ExecutorService executor = Executors.newCachedThreadPool();
 
+        loadJobQueue();
+        executeJobs(executor);
+        semaphore.release();
+        waitOnJobs();
+        terminateJobs(executor);
+    }
+
+    private static void loadJobQueue()
+    {
         try
         {
             semaphore.acquire();
@@ -29,21 +39,25 @@ public class FunWithQueues
             {
                 queue.add(i);
             }
-            semaphore.release();
         }
         catch (final InterruptedException e)
         {
             e.printStackTrace();
         }
+    }
 
-        executor.execute(new FunWithQueuesConsumer(1, threadQueue, queue, semaphore));
-        executor.execute(new FunWithQueuesConsumer(2, threadQueue, queue, semaphore));
-        executor.execute(new FunWithQueuesConsumer(3, threadQueue, queue, semaphore));
-        executor.execute(new FunWithQueuesConsumer(4, threadQueue, queue, semaphore));
-        executor.execute(new FunWithQueuesConsumer(5, threadQueue, queue, semaphore));
+    private static void executeJobs(final ExecutorService executor)
+    {
+        for (int i = 0; i < JOBS; i++)
+        {
+            executor.execute(new FunWithQueuesConsumer((i + 1), threadQueue, queue, semaphore));
+        }
+    }
 
+    private static void waitOnJobs()
+    {
         int jobsEnded = 0;
-        while (jobsEnded++ < 5)
+        while (jobsEnded++ < JOBS)
         {
             try
             {
@@ -55,10 +69,13 @@ public class FunWithQueues
                 e.printStackTrace();
             }
         }
+    }
 
-        // waits for termination for 30 seconds only
+    public static void terminateJobs(final ExecutorService executor)
+    {
         try
         {
+            // waits for termination for 30 seconds only
             executor.awaitTermination(1, TimeUnit.SECONDS);
         }
         catch (final InterruptedException e)

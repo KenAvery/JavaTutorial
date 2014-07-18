@@ -38,21 +38,48 @@ public class FunWithQueuesConsumer implements Runnable
         Integer queueValue = 0;
         do
         {
-            try
-            {
-                semaphore.acquire();
-                queueValue = queue.poll();
-                System.out.format(Thread.currentThread().getName() + " Working Job %d: Queue Entrie = %d%n", this.job, queueValue);
-                Thread.sleep(1000);
-                semaphore.release();
-            }
-            catch (final InterruptedException e1)
-            {
-                e1.printStackTrace();
-            }
+            queueValue = getQueueValue();
+            System.out.format(Thread.currentThread().getName() + " Working Job %d: Queue Entrie = %d%n", this.job, queueValue);
+            doSomeWork();
         }
         while (queueValue != null);
 
+        shutdown();
+    }
+
+    private Integer getQueueValue()
+    {
+        Integer jobValue = 0;
+
+        try
+        {
+            semaphore.acquire();
+        }
+        catch (final InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        jobValue = queue.poll();
+        semaphore.release();
+
+        return jobValue;
+    }
+
+    private void doSomeWork()
+    {
+        try
+        {
+            Thread.sleep(1000);
+        }
+        catch (final InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void shutdown()
+    {
         try
         {
             threadQueue.put("SHUTDOWN");
@@ -61,6 +88,5 @@ public class FunWithQueuesConsumer implements Runnable
         {
             e.printStackTrace();
         }
-
     }
 }
