@@ -8,7 +8,7 @@ public class FunWithSortedSets
 
     public static void main(final String[] args)
     {
-        final SortedSet<String> raceHorseSet = new TreeSet<String>(RaceHorses.raceHorses().keySet());
+        final SortedSet<String> raceHorseSet = new TreeSet<String>(UndefetedRaceHorses.raceHorses().keySet());
 
         System.out.println("Race Horse Set: " + raceHorseSet);
         System.out.println("Head Set starting at \"Handsomechamp\"       : " + raceHorseSet.headSet("Handsomchamp"));

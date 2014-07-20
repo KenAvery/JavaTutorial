@@ -10,7 +10,7 @@ public class TopRaceHorse
 {
     public static void main(final String[] args)
     {
-        final List<RaceHorse> raceHorses = loadRaceHorses(RaceHorses.raceHorses());
+        final List<RaceHorse> raceHorses = loadRaceHorses(UndefetedRaceHorses.raceHorses());
 
         System.out.println("Raw List: ");
         printRaceHorse(raceHorses);
@@ -35,7 +35,7 @@ public class TopRaceHorse
         }
     }
 
-    private static List<RaceHorse> loadRaceHorses(final Map<String, Integer> map)
+    public static List<RaceHorse> loadRaceHorses(final Map<String, Integer> map)
     {
         final List<RaceHorse> raceHorses = new LinkedList<RaceHorse>();
         for (final Map.Entry<String, Integer> entry : map.entrySet())

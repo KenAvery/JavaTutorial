@@ -8,7 +8,7 @@ public class FunWithSortedMaps
 
     public static void main(final String[] args)
     {
-        final SortedMap<String, Integer> raceHorseMap = new TreeMap<String, Integer>(RaceHorses.raceHorses());
+        final SortedMap<String, Integer> raceHorseMap = new TreeMap<String, Integer>(UndefetedRaceHorses.raceHorses());
 
         System.out.println("Race Horse Map: " + raceHorseMap);
         System.out.println("Head Map starting at \"Highflyer\"       : " + raceHorseMap.headMap("Highflyer"));

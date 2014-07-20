@@ -3,7 +3,7 @@ package org.ken.avery.collections.interfaces;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RaceHorses
+public class UndefetedRaceHorses
 {
 
     public static Map<String, Integer> raceHorses()
