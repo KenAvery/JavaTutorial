@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class RaceHorses
 {
+
     public static Map<String, Integer> raceHorses()
     {
         final Map<String, Integer> raceHorses = new HashMap<String, Integer>();
