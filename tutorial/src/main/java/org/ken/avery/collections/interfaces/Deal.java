@@ -1,4 +1,4 @@
-package org.ken.avery.collections;
+package org.ken.avery.collections.interfaces;
 
 /*
  * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.

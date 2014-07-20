@@ -1,4 +1,4 @@
-package org.ken.avery.collections;
+package org.ken.avery.collections.interfaces;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
