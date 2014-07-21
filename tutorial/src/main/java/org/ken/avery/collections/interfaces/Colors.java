@@ -20,6 +20,24 @@ public class Colors
     public static final String GRAY = "Gray";
     public static final String AZURE = "Azure";
 
+    public enum Color
+    {
+        RED,
+        AERO,
+        ALMOND,
+        AMBER,
+        BEIGE,
+        WHITE,
+        BLUE,
+        CHARCOAL,
+        PINK,
+        FALLOW,
+        BLACK,
+        GREEN,
+        GRAY,
+        AZURE
+    }
+
     public static Map<Integer, String> colors()
     {
         final Map<Integer, String> colors = new HashMap<Integer, String>();
