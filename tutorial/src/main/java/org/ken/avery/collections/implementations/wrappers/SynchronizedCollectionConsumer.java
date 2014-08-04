@@ -97,10 +97,7 @@ public class SynchronizedCollectionConsumer implements Runnable
     {
         for (int i = 0; i < synchronizedList.size(); i++)
         {
-            synchronized (synchronizedList)
-            {
-                synchronizedList.set(i, (synchronizedList.get(i) + 1));
-            }
+            synchronizedList.set(i, (synchronizedList.get(i) + 1));
         }
     }
 
