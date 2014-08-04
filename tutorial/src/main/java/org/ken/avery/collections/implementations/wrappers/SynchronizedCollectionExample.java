@@ -97,6 +97,9 @@ public class SynchronizedCollectionExample
             try
             {
                 final String shutdown = shutdownQueue.take();
+
+                // Ensure threads do not intermingle console print output
+                // Consider this as an example of managing resource access
                 semaphore.acquire();
                 System.out.println("Received: " + shutdown);
                 semaphore.release();

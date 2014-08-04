@@ -30,74 +30,23 @@ public class SynchronizedCollectionConsumer implements Runnable
         this.shutdownQueue = shutdownQueue;
     }
 
-    private void printInitialInformation()
-    {
-        final Random random = new Random(100);
-        try
-        {
-            semaphore.acquire();
-
-            System.out.println(Thread.currentThread().getName() + " Start  : Job = " + job);
-            printCollection("Initial " + job + ":");
-
-            Thread.sleep(random.nextInt(1000));
-        }
-        catch (final InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-        semaphore.release();
-    }
-
-    private void printCollection(final String title)
-    {
-        System.out.println(title);
-        int i = 0;
-        for (final Integer value : synchronixedCollection)
-        {
-            if (i++ >= (synchronixedCollection.size() / 2))
-            {
-                i = 0;
-                System.out.println();
-            }
-            System.out.print("[" + value + "]");
-        }
-        System.out.println();
-    }
-
-    private void printFinalInformation()
-    {
-        try
-        {
-            semaphore.acquire();
-
-            printCollection("Final " + job + ":");
-            System.out.println(Thread.currentThread().getName() + " End    : Job = " + job);
-        }
-        catch (final InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-        semaphore.release();
-    }
-
     @Override
     public void run()
     {
-        printInitialInformation();
-
+        initializeJob();
         runJob();
-
-        printFinalInformation();
-
+        finalizeJob();
         shutdown();
     }
 
     public void runJob()
     {
-        for (int i = 0; i < synchronizedList.size(); i++)
+        synchronized (synchronizedList)
         {
-            synchronizedList.set(i, (synchronizedList.get(i) + 1));
+            for (int i = 0; i < synchronizedList.size(); i++)
+            {
+                synchronizedList.set(i, (synchronizedList.get(i) + 1));
+            }
         }
     }
 
@@ -111,5 +60,64 @@ public class SynchronizedCollectionConsumer implements Runnable
         {
             e.printStackTrace();
         }
+    }
+
+    private void initializeJob()
+    {
+        final Random random = new Random(100);
+        try
+        {
+            // Ensure threads do not intermingle console print output
+            // Consider this as an example of managing resource access
+            semaphore.acquire();
+
+            System.out.println(Thread.currentThread().getName() + " Start  : Job = " + job);
+            printCollection("Initial " + job + ":");
+
+            // Add some random behavior to which thread is running
+            Thread.sleep(random.nextInt(1000));
+        }
+        catch (final InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        semaphore.release();
+    }
+
+    private void printCollection(final String title)
+    {
+        System.out.println(title);
+        int i = 0;
+        synchronized (synchronixedCollection)
+        {
+            for (final Integer value : synchronixedCollection)
+            {
+                if (i++ >= (synchronixedCollection.size() / 2))
+                {
+                    i = 0;
+                    System.out.println();
+                }
+                System.out.print("[" + value + "]");
+            }
+        }
+        System.out.println();
+    }
+
+    private void finalizeJob()
+    {
+        try
+        {
+            // Ensure threads do not intermingle console print output
+            // Consider this as an example of managing resource access
+            semaphore.acquire();
+
+            printCollection("Final " + job + ":");
+            System.out.println(Thread.currentThread().getName() + " End    : Job = " + job);
+        }
+        catch (final InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        semaphore.release();
     }
 }
